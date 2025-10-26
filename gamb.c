@@ -20,6 +20,13 @@ int colunaVenceu(int col) {
     return (roleta[0][col] == roleta[1][col] && roleta[1][col] == roleta[2][col]);
 }
 
+int verificarPadraoEspecial(){
+    if(roleta[0][1] == roleta[1][0] && roleta[1][0] == roleta[1][2] && roleta[1][2] == roleta[2][1]){
+        return 1;
+    }
+    return 0; // Padrão não encontrado
+}
+
 void verificarGanhos(){
 
     multiplicadorDeGanho = 1;
@@ -35,6 +42,12 @@ void verificarGanhos(){
             multiplicadorDeGanho += 0.5;
             dinheiroAGanhar += valor3x;
         } 
+
+    }
+
+    if(verificarPadraoEspecial()){
+        multiplicadorDeGanho += 1;
+        dinheiroAGanhar += valor4x;
     }
 
     dinheiro += ceil(multiplicadorDeGanho) * dinheiroAGanhar;
@@ -66,9 +79,13 @@ void menu(){
             printf(">       ");
 
             for(int j = 0;j<3;j++){ // j é a coluna (col)
-                
-                if(linhaVenceu(i) || colunaVenceu(j)){
-                    printf(COR_VERMELHO "%d " COR_RESET, roleta[i][j]);
+
+                if(verificarPadraoEspecial() || linhaVenceu(i) || colunaVenceu(j)){
+                    if(verificarPadraoEspecial()) {
+                        printf(COR_CIANO "%d " COR_RESET, roleta[i][j]);
+                    } else{
+                        printf(COR_VERMELHO "%d " COR_RESET, roleta[i][j]);
+                    }
                 } else {
                     printf("%d ",roleta[i][j]);
                 }

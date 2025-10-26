@@ -42,6 +42,7 @@ float multiplicadorDeGanho = 1;
 int dinheiroAGanhar = 0;
 
 int valor3x = 1;
+int valor4x = 2;
 
 int ganhoAtual = 1;
 
