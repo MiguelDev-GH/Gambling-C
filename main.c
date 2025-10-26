@@ -8,18 +8,6 @@ int main(){
 
     do{
 
-        roleta[0][0] = 1;
-        roleta[0][1] = 1;
-        roleta[0][2] = 1;
-
-        roleta[1][0] = 2;
-        roleta[1][1] = 2;
-        roleta[1][2] = 2;
-
-        roleta[2][0] = 2;
-        roleta[2][1] = 2;
-        roleta[2][2] = 2;
-
         menu();
 
         scanf("%d",&op);

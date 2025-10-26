@@ -6,8 +6,20 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include <unistd.h>
+#include <windows.h>
 
+#ifdef _WIN32
 #define LIMPAR system("cls")
+#else
+#define LIMPAR system("clear")
+#endif
+
+#define COR_RESET    "\x1b[0m"
+#define COR_VERDE    "\x1b[32m"
+#define COR_AMARELO  "\x1b[33m"
+#define COR_VERMELHO "\x1b[31m"
+#define COR_CIANO    "\x1b[36m"
 
 int op = 0;
 

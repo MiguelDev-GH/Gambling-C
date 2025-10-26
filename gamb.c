@@ -10,7 +10,14 @@ void rolar(){
         }
     }
 
+}
 
+int linhaVenceu(int row) {
+    return (roleta[row][0] == roleta[row][1] && roleta[row][1] == roleta[row][2]);
+}
+
+int colunaVenceu(int col) {
+    return (roleta[0][col] == roleta[1][col] && roleta[1][col] == roleta[2][col]);
 }
 
 void verificarGanhos(){
@@ -44,25 +51,36 @@ void verificarGanhos(){
 
 void menu(){
 
-    LIMPAR;
+    for(int r = 0;r<10;r++){
 
-    rolar();
+        LIMPAR;
 
-    printf("-----------------------\n\n");
+        printf("-----------------------\n\n");
 
-    printf("Custo para jogar: $ %d\n",preco);
+        printf("Custo para jogar: $ %d\n\n",preco);
+
+        rolar();
     
-    for(int i = 0;i<3;i++){
+        for(int i = 0;i<3;i++){ // i é a linha (row)
 
-        printf(">       ");
+            printf(">       ");
 
-        for(int j = 0;j<3;j++){
-            printf("%d ",roleta[i][j]);
+            for(int j = 0;j<3;j++){ // j é a coluna (col)
+                
+                if(linhaVenceu(i) || colunaVenceu(j)){
+                    printf(COR_VERMELHO "%d " COR_RESET, roleta[i][j]);
+                } else {
+                    printf("%d ",roleta[i][j]);
+                }
+            }
+
+            printf("       <");
+            printf("\n");
+
         }
 
-        printf("       <");
+        Sleep(r*(r*5));
 
-            printf("\n");
     }
 
     verificarGanhos();
