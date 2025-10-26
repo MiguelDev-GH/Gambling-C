@@ -1,5 +1,7 @@
 #include "gamb.c"
 
+//TÁ TUDO ERRADO POR ENQT MDS
+
 int main(){
 
     srand(time(NULL));
